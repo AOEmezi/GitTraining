@@ -10,72 +10,59 @@ type UserData struct {
 }
 
 func main() {
-//List of options for user to choose from via input.
-	fmt.Printf("SUM = A")
-	fmt.Printf("FACTORIAL = B")
-	fmt.Printf("CONCATENATES STRINGS = C")
+	// List of options for the user to choose from via input.
+	fmt.Println("Select an option:")
+	fmt.Println("SUM = A | FACTORIAL = B | CONCATENATES STRINGS = C")
 
-	fmt.Scanf("%v")
+	var choice string
+	fmt.Scan(&choice)
 
-	if {
-		fmt.Scanf("%v") = A
-		sum()
-	} else {
-		fmt.Scanf("%v") = B
-		factorial()
-	} else {
-		fmt.Scanf("%v") = C
-		concatenates()
+	switch choice {
+	case "A":
+		var a, b int
+
+		fmt.Println("Enter your first number: ")
+		fmt.Scan(&a)
+		fmt.Println("Enter your second number: ")
+		fmt.Scan(&b)
+
+		c := sum(a, b)
+		fmt.Printf("%v + %v = %v\n", a, b, c)
+
+	case "B":
+		var n int
+		fmt.Println("Enter a number to calculate its factorial: ")
+		fmt.Scan(&n)
+
+		f := factorial(n)
+		fmt.Printf("Factorial of %v: %v\n", n, f)
+
+	case "C":
+		var firstName, lastName, otherNames string
+		fmt.Println("Enter first name: ")
+		fmt.Scan(&firstName)
+		fmt.Println("Enter last name: ")
+		fmt.Scan(&lastName)
+		fmt.Println("Enter other names: ")
+		fmt.Scan(&otherNames)
+		result := concatenates(firstName, otherNames, lastName)
+		fmt.Println("Concatenated String:", result)
+	default:
+		fmt.Println("Invalid choice")
 	}
-		
-	for {
-		a, b := userInput()
-		f:= factorial()
-
-		if a && b = int {
-			c:=sum()
-			fmt.Printf("%v + %v = %v\n", a, b, c)
-			break
-		}
-	} else _{
-		if f != float64 {
-			fmt.Printf("factorial(%v)" ,f)
-		}
-	}	
-}
-
-func userInput(a, b int) {
-	var userData = UserData{
-		a: a,
-		b: b,
-		f: f,
-	}
 
 }
-
-//Create a function in Go that takes two integers as parameters and returns their sum.
-func sum() int {
-	fmt.Println("Enter your first number: ") //asks for first number
-	fmt.Scan(&a)                             //collects input from user
-
-	fmt.Println("Enter your second number: ") //asks for second number
-	fmt.Scan(&b)                              //collects input from user
-
-	c := a + b
-	return c
-
+func sum(a, b int) int {
+	return a + b
 }
-
-//Create a function to calculate the factorial of a number
-func factorial() float64 {
-	for i := 1; i < n; i++ {
-		f := n * (n-1)
+func factorial(n int) float64 {
+	f := 1.0
+	for i := 1; i <= n; i++ {
+		f *= float64(i)
 	}
 	return f
 }
-
-//Create a function that accepts a variable number of strings and concatenates them into a single string.
-func concatenates(firstName string, lastName string, otherNames string) string {
-    fullName := fmt.Sprintf("%v %v %v", firstName, lastName, otherNames)
-    return fullName
+func concatenates(firstName, lastName, otherNames string) string {
+	fullName := fmt.Sprintf("%v %v %v", firstName, lastName, otherNames)
+	return fullName
 }
